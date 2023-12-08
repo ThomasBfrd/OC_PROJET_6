@@ -1,31 +1,27 @@
-const getIdByUrl = () => {
-  const url = new URL(document.location);
-  const id = parseInt(url.searchParams.get("id"));
 
-  return id;
-};
+class PhotographerProfile {
+  constructor(data) {
+    this._data = new Photographer(data);
+  }
 
-async function getPhotographers() {
-  const reponse = await fetch("../../data/photographers.json");
-  const photographers = await reponse.json();
+  createPhotographerCard() {
+    const $article = document.createElement("article");
 
-  return photographers;
+    const photographersCard = `
+        <a href="/photographer.html/${this._data._id}">
+            <div class="imgUser">
+            <img src="${this._data.portrait}" alt="" class="portrait_${this._data._id}">
+            </div>
+            <h2 class="name">${this._data.name}</h2>
+        </a>
+        <div class="textContent">
+            <p class="city">${this._data.city}, ${this._data.country}</p>
+            <p class="tagline">${this._data.tagline}</p>
+            <p class="price">${this._data.price}€/jour</p>
+        </div>
+       `;
+
+    $article.innerHTML = photographersCard;
+    return $article;
+  }
 }
-
-async function displayData(photographers) {
-  const id = getIdByUrl();
-  const photographer = photographers.filter((user) => user.id === id)[0];
-
-  const photographerHeader = document.querySelector(".photograph_header");
-  const photographerModel = photographerTemplate(photographer);
-  const userCardDOM = photographerModel.getUserCardDOM();
-  photographerHeader.appendChild(userCardDOM);
-}
-
-async function init() {
-  // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
-}
-
-init();

@@ -1,28 +1,26 @@
-    async function getPhotographers() {
+class PhotographerCard {
+  constructor(data) {
+    this._data = new Photographer(data);
+  }
 
-        const reponse = await fetch('../../data/photographers.json')
-        const photographers = await reponse.json()
+  createPhotographerCard() {
+    const $article = document.createElement("article");
 
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return (photographers)
-            
-    }
+    const photographersCard = `
+        <a href="/photographer.html?id=${this._data._id}">
+            <div class="imgUser">
+            <img src="${this._data.portrait}" alt="" class="portrait_${this._data._id}">
+            </div>
+            <h2 class="name">${this._data.name}</h2>
+        </a>
+        <div class="textContent">
+            <p class="city">${this._data.city}, ${this._data.country}</p>
+            <p class="tagline">${this._data.tagline}</p>
+            <p class="price">${this._data.price}€/jour</p>
+        </div>
+       `;
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
-
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
-    
-    init();
-    
+    $article.innerHTML = photographersCard;
+    return $article;
+  }
+}
