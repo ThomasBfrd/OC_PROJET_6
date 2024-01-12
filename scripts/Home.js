@@ -1,8 +1,8 @@
 'use strict';
 
 
-import API from './api/Api.js'
-import HomePageBuilder from './pages/index.js';
+import API from '../scripts/api/Api.js'
+import HomePageBuilder from '../scripts/pages/index.js';
 
 
 const homepage = () => {
