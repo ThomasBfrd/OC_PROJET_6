@@ -159,7 +159,6 @@ setTimeout(() => {
   // Récupération et validation de l'input text au focus out
   const firstnameField = document.querySelector("#firstName");
   if (firstnameField) {
-    console.log('input name récupéré');
     firstnameField.addEventListener("focusout", () => {
       validString("firstName");
     });
