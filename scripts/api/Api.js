@@ -2,7 +2,7 @@
 
 export default class API {
     async getData() {
-        let url = '/data/photographers.json';
+        let url = '/../../data/photographers.json';
         let response = await fetch(url);
         let data = await response.json();
 
