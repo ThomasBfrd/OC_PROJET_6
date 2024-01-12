@@ -1,21 +1,24 @@
-class Profile {
-    constructor() {
-        this.photographerSection = document.querySelector('.photograph_header')
-        this.getPhotographers = new GetPhotographers('/data/photographers.json')
-    }
+'use strict';
 
-    async init() {
+// OK Finir le clavier pour la lightbox : (4 et 6 et left / right) OK
+// OK Ajouter echap pour fermer le dropdown OK
+// OK Ajouter echap pour fermer la modale OK
+// OK Ajouter entrer pour ouvrir la lightbox OK
+// Dans lightbox - espace pour lancer la vidéo
+// Ajouter animation like coeur
+// Check l'accessibility
 
-        const photographersData = await this.getPhotographers.getPhotograph()
-        
-        const urlId = new URL(document.location)
-        const id = parseInt(urlId.searchParams.get('id'))
+import API from './api/Api.js';
+import PhotographerProfile from './pages/Photographer/PhotographerProfile.js';
+import PhotographerMedias from './pages/Photographer/PhotographerMedias.js'
 
-        const profile = photographersData.filter(profile => profile.id === id)[0]
-        const page = new PhotographerProfile(profile).createPhotographerCard()
-        this.photographerSection.appendChild(page);
-    }
+const profile = () => {
+    new API().getData().then((data) => {
+        new PhotographerProfile().createPhotographerCard(data);
+        new PhotographerMedias().mediasProfile(data);
+      }).catch(() => {
+        console.error('Soucis dans la réception des données', data);
+    })
 }
 
-const profile = new Profile()
-profile.init()
+profile()

@@ -1,0 +1,99 @@
+@import './base.css';
+
+.lightbox_wrapper {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.lightbox_media {
+    width: 100%;
+    height: 100%;
+    border: 0.5 solid #fff;
+}
+
+.lightbox_media img {
+    max-height: 700px;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lightbox_media video {
+    max-width: 1000px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lightbox_media_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.next, .previous, .close {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    -webkit-text-stroke: 1px #000;
+    z-index: 10;
+}
+
+.next, .previous {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.previous {
+    left: 10px;
+}
+
+.close {
+    top: 10px;
+    right: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.next::before, .previous::before, .close::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: clamp(2rem, 2vw, 3rem);
+    color: #fff;
+}
+
+.close::before {
+    content: "\f00d";
+}
+
+.next::before {
+    content: '\f054';
+}
+
+.previous::before {
+    content: '\f053';
+}

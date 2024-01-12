@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <meta charset="utf-8">
-    <title>Fisheye - photographe </title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Affichage du photographe FishEye sélectionné">
+    <title>Fisheye - Photographe</title>
+    <link href="css/mini/style-min.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <script src="https://kit.fontawesome.com/6143c6d1aa.js" crossorigin="anonymous" defer></script>
+    <script type="module" src="./scripts/Profile.js"></script>
+    <script src="./scripts/pages/Photographer/ValidForm.js"></script>
   </head>
   <body>
-    <header>
-      <a href="./index.html">
-        <img src="assets/images/logo.png" class="logo" />
+    <header role="banner">
+      <a href="./index.html" aria-label="Retour sur la page d'accueil de FishEye">
+        <img src="assets/images/logo.png" class="logo" alt="logo FishEye" />
       </a>
     </header>
-    <main id="main">
-      <div class="photograph_header">
-        <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="scripts/api/Api.js"></script>
-    <script src="scripts/models/Photographer.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/Profile.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
-
+    <main id="main" role="main">
+      <section class="photograph_header" id="photographers" aria-label="photographer profile"></section>
+      </header>
+      <section class="photograph_main">
+        <div class="filter" aria-label="filters" role="combobox" aria-expanded="false" aria-controls="listbox"
+          aria-owns="listbox" aria-haspopup="true">
+          <label for="filter">Trier par</label>
+          <div class="dropdown" aria-label="listbox" aria-labelledby="sort by">
+            <div class="select" tabindex="0">
+              <span class="selected" aria-selected="true">Popularité</span>
+              <div class="caret"></div>
+            </div>
+            <ul class="menu" aria-label="filter selection" role="listbox">
+              <li role="option" aria-selected="true" tabindex="0">Popularité</li>
+              <li role="option" aria-selected="false" tabindex="0">Date</li>
+              <li role="option" aria-selected="false" tabindex="0">Titre</li>
+            </ul>
+            </div>
+        </div>
+        <div class="medias" aria-label="photographer medias" role="listbox"></div>
+        </section>
+        <aside class="resume-profile" aria-label="photographer likes and price" role="complementary"></aside>
+        <div class="lightbox_wrapper">
+          <aside class="lightbox" role="dialog" aria-label="lightbox photographer medias">
+            <button class="next"></button>
+            <button class="previous"></button>
+            <button class="close"></button>
+            <div class="lightbox_media"></div>
+            <div class="lightbox_name"></div>
+          </aside>
+        </div>
+        </main>
+        <div id="contact_modal" aria-label="photographer contact"></div>
   </body>
 </html>
