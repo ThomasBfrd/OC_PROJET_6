@@ -3,7 +3,7 @@
 import MediasLightbox from "../pages/Photographer/MediasLightbox.js";
 import MediasFactory from "./MediasFactory.js";
 
-export default class PhotographerMedias {
+export default class GalleryFactory {
   constructor() {
     this.totalLikes = 0;
   }
@@ -28,7 +28,7 @@ export default class PhotographerMedias {
                <span class="media_title">${item.title}</span>
                <div class="media_likes">
                 <span class="likes">${item.likes}</span>
-                <i class="fa-solid fa-heart heart"></i>
+                <i class="fa-regular fa-heart heart"></i>
                </div>
            </div>
        </div>
