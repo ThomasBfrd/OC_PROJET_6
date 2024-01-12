@@ -343,7 +343,7 @@ input:-webkit-autofill:focus  {
 }
 
 .select {
-  background: var(--secondary-text);
+  background-color: var(--secondary-text);
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -354,13 +354,17 @@ input:-webkit-autofill:focus  {
   cursor: pointer;
 }
 
+.selected {
+  color: #fff;
+}
+
 .select-clicked {
   border: 2px var(--primary-text) solid;
   box-shadow: 0 0 0.8em var(--primary-text);
 }
 
 .select:hover {
-  background: var(--primary-text);
+  background-color: var(--primary-text);
 }
 
 .caret {
@@ -379,7 +383,7 @@ input:-webkit-autofill:focus  {
 .menu {
   list-style: none;
   /* padding: 0.2em 0.5em; */
-  background: var(--secondary-text);
+  background-color: var(--secondary-text);
   border: 1px var(--primary-text) solid;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -403,11 +407,11 @@ input:-webkit-autofill:focus  {
 }
 
 .menu li:hover {
-  background: var(--primary-text);
+  background-color: var(--primary-text);
 }
 
 .active {
-  background: var(--primary-text);
+  background-color: var(--primary-text);
 }
 
 .menu-open {
