@@ -1,24 +1,17 @@
-class Api {
+'use strict'
 
-    constructor(url) {
-        this._url = url;
-    }
-
+export default class API {
     async getData() {
-        return fetch(this._url)
-            .then(response => response.json())
-            .then(response => response.photographers)
-            .catch(error => console.log(error))
-    }
-}
+        let url = '../../data/photographers.json';
+        let response = await fetch(url);
+        let data = await response.json();
 
-class GetPhotographers extends Api {
+        const dataPhotographers = [...data.photographers];
+        const dataMedias = [...data.media];
 
-    constructor(url) {
-        super(url)
-    }
-
-    async getPhotograph() {
-        return await this.getData()
+        return {
+            'photographers': dataPhotographers,
+            'media': dataMedias
+        };
     }
 }

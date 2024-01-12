@@ -1,44 +1,5 @@
 
-
-:root {
-    --primary-text: #D3573C;
-    --primary-bg: #901C1C;
-    --secondary-text: #901C1C;
-    --secondary-bg: #D3573C;
-    --tertiary-text: #525252;
-    --tertiary-bg: #FAFAFA;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "DM Sans", sans-serif;
-    padding: 20px;
-}
-
-
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
-}
-
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
-    font-weight: 300;
-}
-
-.logo {
-    height: 50px;
-    margin-left: 100px;
-}
+@import './base.css';
 
 .photographer_section {
     display: grid;
@@ -54,8 +15,6 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* gap: 10px; */
-    /* height: 310px; */
 }
 
 .name {
@@ -71,51 +30,6 @@ h1 {
     justify-content: center;
     align-items: center !important;
     gap: 5px;
-}
-
-.imgUser {
-    overflow: hidden;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.imgUser img {
-    object-fit: cover;
-    display: block;
-    height: 200px;
-    width: 200px;
-    line-height: 200px;
-    text-align: center;
-}
-
-.portrait_243 {
-    transform: scale(1.5);
-    object-position: 50% -23px;
-}
-
-.portrait_930 {
-    transform: scale(1.8);
-    object-position: 50% 20px;
-}
-
-.portrait_82 {
-    transform: scale(1.2);
-    object-position: 20px 0px;
-}
-
-.portrait_527 {
-    transform: scale(1.2);
-    object-position: 5px -30px;
-}
-
-.portrait_925 {
-    transform: scale(1.7);
-    object-position: -52px 25px;
-}
-
-.portrait_195 {
-    transform: scale(1.9);
-    object-position: -55px 23px;
 }
 
 .city {
