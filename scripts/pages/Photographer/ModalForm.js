@@ -67,6 +67,9 @@ export default class ModalForm {
     function displayModal() {
       const modal = document.getElementById("contact_modal");
       modal.style.display = "block";
+      const body = document.querySelector('body');
+      body.style.overflow = 'hidden';
+      window.scrollTo(0, 0)
     }
 
     if (modalForm) {
@@ -86,6 +89,9 @@ export default class ModalForm {
     const closeModal = () => {
       const modal = document.getElementById("contact_modal");
       modal.style.display = "none";
+      const body = document.querySelector('body');
+      body.style.overflow = 'visible';
+      window.scrollTo(0, 0)
     }
 
     
