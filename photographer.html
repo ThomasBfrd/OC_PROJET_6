@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <script src="https://kit.fontawesome.com/6143c6d1aa.js" crossorigin="anonymous" defer></script>
     <script type="module" src="./scripts/Profile.js"></script>
-    <script src="./scripts/pages/Photographer/ValidForm.js"></script>
+    <script src="./scripts/pages/Photographer/utils/ValidForm.js"></script>
   </head>
   <body>
     <header role="banner">
@@ -23,12 +23,11 @@
       <section class="photograph_header" id="photographers" aria-label="photographer profile"></section>
       </header>
       <section class="photograph_main">
-        <div class="filter" aria-label="filters" role="combobox" aria-expanded="false" aria-controls="listbox"
-          aria-owns="listbox" aria-haspopup="true">
-          <label for="filter">Trier par</label>
+        <div class="filter" aria-label="filters" role="combobox" aria-expanded="false" aria-haspopup="true">
+          <span aria-labelledby="trier par">Trier par</span>
           <div class="dropdown" aria-label="listbox" aria-labelledby="sort by">
             <div class="select" tabindex="0">
-              <span class="selected" aria-selected="true" aria-label="selected filter">Popularité</span>
+              <span class="selected" aria-label="selected filter">Popularité</span>
               <div class="caret"></div>
             </div>
             <ul class="menu" aria-label="filter selection" role="listbox">
@@ -38,7 +37,7 @@
             </ul>
             </div>
         </div>
-        <div class="medias" aria-label="photographer medias" role="listbox"></div>
+        <div class="medias" aria-label="photographer medias" role="group"></div>
         </section>
         <aside class="resume-profile" aria-label="photographer likes and price" role="complementary"></aside>
         <div class="lightbox_wrapper">

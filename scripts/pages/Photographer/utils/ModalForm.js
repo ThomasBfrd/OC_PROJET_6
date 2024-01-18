@@ -2,11 +2,10 @@
 
 export default class ModalForm {
   constructor() {
-    this.contact = document.querySelector("#contact_modal");
+    this.contact = document.querySelector('#contact_modal');
   }
   createModalContact(profile) {
-
-    const $modalContact = document.createElement("div");
+    const $modalContact = document.createElement('div');
 
     const modalForm = `
       <div class="modal">
@@ -25,19 +24,19 @@ export default class ModalForm {
               <div class="formData" data-error="" data-error-visible="false">
                 <label for="firstName">Prénom</label>
                 <br>
-                <input role="input" class="text-control" type="text" id="firstName" name="firstName" minlength="2">
+                <input role="input" class="text-control" type="text" id="firstName" name="firstName" minlength="2" autocomplete="prenom">
                 <br>
               </div>
               <div class="formData" data-error="" data-error-visible="false">
                 <label for="lastName">Nom</label>
                 <br>
-                <input role="input" class="text-control" type="text" id="lastName" name="lastName" minlength="2">
+                <input role="input" class="text-control" type="text" id="lastName" name="lastName" minlength="2" autocomplete="nom">
                 <br>
               </div>
               <div class="formData" data-error="" data-error-visible="false">
                 <label for="email">Email</label>
                 <br>
-                <input role="input" class="text-control" type="email" id="email" name="email" minlength="2">
+                <input role="input" class="text-control" type="email" id="email" name="email" minlength="2" autocomplete="email">
                 <br>
               </div>
               <div class="formData" data-error="" data-error-visible="false">
@@ -61,24 +60,23 @@ export default class ModalForm {
     $modalContact.innerHTML = modalForm;
     this.contact.appendChild($modalContact);
 
-    const contactBtn = document.querySelector(".contact-button");
+    const contactBtn = document.querySelector('.contact-button');
 
-    contactBtn.addEventListener("click", () => {
+    contactBtn.addEventListener('click', () => {
       displayModal();
     });
 
     function displayModal() {
-      const modal = document.getElementById("contact_modal");
-      modal.style.display = "block";
+      const modal = document.getElementById('contact_modal');
+      modal.style.display = 'block';
       const body = document.querySelector('body');
       body.style.overflow = 'hidden';
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     }
 
     if (modalForm) {
-      
-      const closeBtn = document.getElementById("close");
-      closeBtn.addEventListener("click", () => {
+      const closeBtn = document.getElementById('close');
+      closeBtn.addEventListener('click', () => {
         closeModal();
       });
 
@@ -86,26 +84,25 @@ export default class ModalForm {
         if (event.key === 'Escape') {
           closeModal();
         }
-      })
+      });
     }
 
     const closeModal = () => {
-      const modal = document.getElementById("contact_modal");
-      modal.style.display = "none";
+      const modal = document.getElementById('contact_modal');
+      modal.style.display = 'none';
       const body = document.querySelector('body');
       body.style.overflow = 'visible';
-      window.scrollTo(0, 0)
-    }
+      window.scrollTo(0, 0);
+    };
 
-    
-    const successBtn = document.querySelector(".success-form-button");
+    const successBtn = document.querySelector('.success-form-button');
     successBtn.addEventListener('click', () => {
-      closeSuccessModal()
-    })
-    
+      closeSuccessModal();
+    });
+
     const closeSuccessModal = () => {
-      const modal = document.getElementById("contact_modal");
-      modal.style.display = "none";
-    }
+      const modal = document.getElementById('contact_modal');
+      modal.style.display = 'none';
+    };
   }
 }
