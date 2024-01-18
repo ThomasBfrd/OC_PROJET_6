@@ -16,7 +16,10 @@ export default class ModalForm {
               <h2>Contactez-moi</h2> <br />
               <p>${profile.name}</p>
             </div>
-              <img role="img" id="close" src="assets/icons/close.svg" />
+
+              <button role="button" aria-label="fermer le formulaire" id="close" class="closeForm" >
+                <img src="assets/icons/close.svg" alt="fermer le formulaire" />
+              </button>
             </header>
             <form>
               <div class="formData" data-error="" data-error-visible="false">
@@ -44,13 +47,13 @@ export default class ModalForm {
                 <br>
                 <span class="message-error"></span>
               </div>
-              <button role="button" class="btn-submit contact-button button" type="submit" id="submit">Envoyer</button>
+              <button role="button" aria-label="envoyer" class="btn-submit contact-button button" type="submit" id="submit">Envoyer</button>
             </form>
             </div>
             <div class="success">
               <h2 class="success-form hide"> </h2>
-              <div class="button-success hide">
-                <button role="button" type="button" class="btn-submit contact-button success-form-button">Fermer</button>
+              <div class="button-success hide" aria-label="Merci pour les informations">
+                <button role="button" aria-label="fermer" class="btn-submit contact-button success-form-button">Fermer</button>
               </div>
             </div>
         </div>
@@ -67,6 +70,9 @@ export default class ModalForm {
     function displayModal() {
       const modal = document.getElementById("contact_modal");
       modal.style.display = "block";
+      const body = document.querySelector('body');
+      body.style.overflow = 'hidden';
+      window.scrollTo(0, 0)
     }
 
     if (modalForm) {
@@ -86,6 +92,9 @@ export default class ModalForm {
     const closeModal = () => {
       const modal = document.getElementById("contact_modal");
       modal.style.display = "none";
+      const body = document.querySelector('body');
+      body.style.overflow = 'visible';
+      window.scrollTo(0, 0)
     }
 
     
