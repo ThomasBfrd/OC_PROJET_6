@@ -12,7 +12,7 @@
 // OK Modale Form : stop scroll + margin OK
 // OK Ajouter titre média lightbox OK
 // OK Dans lightbox - espace pour lancer la vidéo OK
-// Check l'accessibility
+// OK Check l'accessibility OK
 
 import API from './api/Api.js';
 import PhotographerProfile from './pages/Photographer/PhotographerProfile.js';

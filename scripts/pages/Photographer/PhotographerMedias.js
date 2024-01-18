@@ -1,9 +1,9 @@
 "use strict";
 
-import GalleryFactory from "../../factories/GalleryFactory.js";
-import SortMedia from './SortMedias.js'
-import ModalForm from './ModalForm.js';
-import LikeMedia from "./MediasLikes.js";
+import BuilderMediasPhotographer from './BuilderMediasPhotographer.js';
+import SortMedia from './utils/SortMedias.js';
+import ModalForm from './utils/ModalForm.js';
+import LikeMedia from './utils/MediasLikes.js';
 
 export default class PhotographerMedias {
   mediasProfile(data) {
@@ -14,7 +14,7 @@ export default class PhotographerMedias {
     let profile = dataPhotographers.filter(photographer => photographer.id === +paramsId)[0];
     let media = dataMedias.filter(medium => medium.photographerId === +paramsId);
    
-    let gallerySection = new GalleryFactory().createMediaCard(media, profile);
+    let gallerySection = new BuilderMediasPhotographer().createMediaCard(media, profile);
     this.photographerResume(gallerySection.totalLikes, profile)
     new SortMedia(media, profile)
     new ModalForm().createModalContact(profile)

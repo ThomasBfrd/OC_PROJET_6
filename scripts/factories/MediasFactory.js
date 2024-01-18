@@ -18,7 +18,6 @@ export default class MediasFactory {
             video.setAttribute('title', media.title)
             video.setAttribute('aria-label', 'video')
             video.setAttribute('src', `/assets/photographers/${profile}/${media.video}`)
-            video.setAttribute('role', 'presentation')
             video.className = 'photographer-media video';
             return video;
         }
