@@ -4,8 +4,14 @@
 // OK Ajouter echap pour fermer le dropdown OK
 // OK Ajouter echap pour fermer la modale OK
 // OK Ajouter entrer pour ouvrir la lightbox OK
-// Dans lightbox - espace pour lancer la vidéo
-// Ajouter animation like coeur
+// OK Ajouter changement état like coeur OK
+// OK Ajout de margin gallery OK
+// OK Zoom léger photos home OK 
+// OK Dropdown - échap général OK
+// OK Data et errors en blanc pour contraste OK
+// OK Modale Form : stop scroll + margin OK
+// OK Ajouter titre média lightbox OK
+// OK Dans lightbox - espace pour lancer la vidéo OK
 // Check l'accessibility
 
 import API from './api/Api.js';
