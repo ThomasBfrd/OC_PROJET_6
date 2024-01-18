@@ -396,11 +396,15 @@ input:-webkit-autofill:focus  {
   padding: 1em;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .selected {
   color: #fff;
   transition: 0.3s;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .select-clicked {
@@ -414,6 +418,7 @@ input:-webkit-autofill:focus  {
 }
 
 .caret {
+  margin-left: 20px;
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
@@ -444,7 +449,7 @@ input:-webkit-autofill:focus  {
   transform: translate(-50%);
   opacity: 0;
   display: none;
-  transition: 0.2s;
+  transition: 0.3s;
   z-index: 1;
 }
 
@@ -452,6 +457,8 @@ input:-webkit-autofill:focus  {
   padding: 0.7em 0.5em;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .menu li:hover {
