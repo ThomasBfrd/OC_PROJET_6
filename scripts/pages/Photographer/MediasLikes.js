@@ -20,9 +20,13 @@ export default class LikeMedia {
                 if (media.isLiked) {                    
                     likeCounter++
                     totalLikesCounter++
+                    heart.classList.remove('fa-regular')
+                    heart.classList.add('fa-solid')
                 } else {
                     likeCounter--
                     totalLikesCounter--
+                    heart.classList.remove('fa-solid')
+                    heart.classList.add('fa-regular')
                 }
                 like.innerHTML = likeCounter
                 totalLikes.innerHTML = totalLikesCounter
@@ -30,3 +34,4 @@ export default class LikeMedia {
         })
     }
 }
+

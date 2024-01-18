@@ -9,12 +9,14 @@ export default class HomePageBuilder {
             let article = document.createElement('article');
             let photographerCard = `
             <a href="../../photographer.html?id=${photographe.id}" title="${photographe.name}">
-                <div class="imgUser">
-                <img src="../../assets/photographers/Photographers_ID_Photos/${photographe.portrait}"
-                alt="Photographe ${photographe.name}"
-                aria-label="Photographe ${photographe.name}"
-                role="img"
-                class="portrait_${photographe.id}">
+                <div class="imgUser ">
+                    <div class="zoomEffect">
+                        <img src="../../assets/photographers/Photographers_ID_Photos/${photographe.portrait}"
+                        alt="Photographe ${photographe.name}"
+                        aria-label="Photographe ${photographe.name}"
+                        role="img"
+                        class="portrait_${photographe.id}">
+                    </div>
                 </div>
                 <h2 class="name">${photographe.name}</h2>
             </a>

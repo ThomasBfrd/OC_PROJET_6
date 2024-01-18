@@ -9,7 +9,7 @@ export default class MediasFactory {
             img.setAttribute('alt', media.title)
             img.setAttribute('aria-label', 'image')
             img.setAttribute('role', 'img')
-            img.className = 'ph-media';
+            img.className = 'photographer-media';
             return img;
         } else if (media.hasOwnProperty('video')) {
             let video = document.createElement('video')
@@ -19,7 +19,7 @@ export default class MediasFactory {
             video.setAttribute('aria-label', 'video')
             video.setAttribute('src', `/assets/photographers/${profile}/${media.video}`)
             video.setAttribute('role', 'presentation')
-            video.className = 'ph-media video';
+            video.className = 'photographer-media video';
             return video;
         }
     }

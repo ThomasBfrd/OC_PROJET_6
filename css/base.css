@@ -5,6 +5,7 @@
   --primary-bg: #901c1c;
   --secondary-text: #901c1c;
   --secondary-bg: #d3573c;
+  --hover-bg: #db8876;
   --tertiary-text: #525252;
   --tertiary-bg: #fafafa;
   --modal-bg: #db8876;
@@ -60,11 +61,21 @@ h1 {
   width: 200px;
   line-height: 200px;
   text-align: center;
+  transition: 0.3s ease-in-out;
 }
+
+.zoomEffect {
+  transition: transform 0.6s ease-in-out;
+ }
+ 
+ .zoomEffect:hover {
+  transform: scale(1.05);
+ }
 
 .portrait_243 {
   transform: scale(1.5);
   object-position: 50% -23px;
+  transition: 0.3s;
 }
 
 .portrait_930 {

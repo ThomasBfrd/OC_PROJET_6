@@ -60,6 +60,12 @@ export default class SortMedia {
      });
     }); 
      
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        menu.classList.remove("menu-open");
+        caret.classList.remove("caret-rotate");
+      }
+    })
 
     // On récupère au clique le "li" sélectionné pour trier la liste des médias
     const menuItems = document.querySelectorAll(".menu li");

@@ -61,6 +61,8 @@ setTimeout(() => {
     const successForm = document.querySelector(".success-form");
     successForm.classList.remove("hide");
     successForm.textContent = "Merci pour les informations !";
+    successForm.setAttribute('aria-label', 'merci pour les informations')
+    successForm.setAttribute('aria-live', 'polite');
     const successBtnForm = document.querySelector(".button-success");
     successBtnForm.classList.remove("hide");
     clearAllSuccessInput();
