@@ -102,3 +102,37 @@ h1 {
   transform: scale(1.9);
   object-position: -55px 23px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .header {
+   justify-content: center;
+   margin: 0 auto;
+   width: 100dvw;
+  }
+
+  .logo {
+    margin-left: 30dvw;
+  }
+
+  .header-home {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90dvw;
+    text-align: center;
+    margin: 20px auto;
+    margin-top: 100px;
+  }
+
+
+  .logo-home {
+    margin: 50px 0;
+  }
+
+  h1 {
+    margin: 0 auto;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+}

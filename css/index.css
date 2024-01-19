@@ -19,8 +19,10 @@
 
 .name {
     color: var(--primary-text) !important;
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: 200 !important;
+    width: 100%;
+    text-align: center;
 }
 
 
@@ -58,3 +60,14 @@ a {
     flex-direction: column;
     align-items: center;
 }
+
+@media screen and (max-width: 850px) {
+
+    .photographer_section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        gap: 70px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+  }

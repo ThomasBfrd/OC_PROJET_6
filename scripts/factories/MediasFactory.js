@@ -14,10 +14,9 @@ export default class MediasFactory {
         } else if (media.hasOwnProperty('video')) {
             let video = document.createElement('video')
             video.setAttribute('tabindex', '0')
-            video.setAttribute('controls', 'true')
             video.setAttribute('title', media.title)
             video.setAttribute('aria-label', 'video')
-            video.setAttribute('src', `/assets/photographers/${profile}/${media.video}`)
+            video.setAttribute('src', `/assets/photographers/${profile}/${media.video}#t=0.1`)
             video.className = 'photographer-media video';
             return video;
         }
