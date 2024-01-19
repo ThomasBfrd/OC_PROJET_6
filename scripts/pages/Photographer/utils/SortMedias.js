@@ -6,6 +6,10 @@ export default class SortMedia {
     this.originalMedias = medias;
     this.sortedMedias = [...this.originalMedias];
     this.profile = profile;
+    this.totalLikes = 0;
+
+    let totalLikes = document.querySelector('.total-likes');
+    this.totalLikes = this.originalMedias.reduce((acc, cur) => acc + cur.likes, 0)
 
     const dropdown = document.querySelector('.dropdown');
 
@@ -71,12 +75,12 @@ export default class SortMedia {
     menuItems.forEach((item) => {
       item.addEventListener('click', () => {
         const selectedId = item.innerHTML;
-        console.log(selectedId);
         this.filterSelected(selectedId);
 
         // Une fois que mediasSorted est mis à jour, il faut également le mettre à jour dans le DOM
         // On appelle donc la méthode updateMediaSection
         this.updateMediaSection(this.sortedMedias);
+        totalLikes.innerHTML = this.totalLikes
       });
 
       item.addEventListener('keydown', (event) => {
@@ -87,6 +91,7 @@ export default class SortMedia {
           // Une fois que mediasSorted est mis à jour, il faut également le mettre à jour dans le DOM
           // On appelle donc la méthode updateMediaSection
           this.updateMediaSection(this.sortedMedias);
+          totalLikes.innerHTML = this.totalLikes
         }
       });
     });
