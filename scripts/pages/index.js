@@ -20,9 +20,11 @@ export default class HomePageBuilder {
                 </div>
                 <h2 class="name">${photographe.name}</h2>
             </a>
-            <p class="location">${photographe.city}, ${photographe.country}</p>
-            <p class="tagline">${photographe.tagline}</p>
-            <p class="price">${photographe.price}€/jour</p>
+            <div class="textContent">
+                <p class="city">${photographe.city}, ${photographe.country}</p>
+                <p class="tagline">${photographe.tagline}</p>
+                <p class="price">${photographe.price}€/jour</p>
+            </div>
             `
 
             sectionPhotographers.appendChild(article);

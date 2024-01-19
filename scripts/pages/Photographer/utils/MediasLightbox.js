@@ -43,10 +43,18 @@ export default class MediasLightbox {
     lightBoxMedia.innerHTML = `${src}`;
     lightBoxName.innerHTML = `${nameSrc}`;
 
+    this.isVideo(lightBoxMedia)
     this.previousBtn(previous, media, mediaTitle);
     this.nextBtn(next, media, mediaTitle);
     this.keyboardParameters(media, mediaTitle);
     this.closeLightBox();
+  }
+
+  isVideo(item) {
+    if (item.children[0].tagName === 'VIDEO') {
+      item.children[0].setAttribute('controls', true);
+      item.children[0].setAttribute('controlslist', 'nodownload');
+    }
   }
 
   keyboardParameters(media, title) {
