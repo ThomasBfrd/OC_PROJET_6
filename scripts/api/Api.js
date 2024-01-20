@@ -1,17 +1,17 @@
-'use strict'
+'use strict';
 
 export default class API {
-    async getData() {
-        let url = '/../../data/photographers.json';
-        let response = await fetch(url);
-        let data = await response.json();
+	async getData() {
+		const url = '/../../data/photographers.json';
+		const response = await fetch(url);
+		const data = await response.json();
 
-        const dataPhotographers = [...data.photographers];
-        const dataMedias = [...data.media];
+		const dataPhotographers = [...data.photographers];
+		const dataMedias = [...data.media];
 
-        return {
-            'photographers': dataPhotographers,
-            'media': dataMedias
-        };
-    }
+		return {
+			'photographers': dataPhotographers,
+			'media': dataMedias,
+		};
+	}
 }
