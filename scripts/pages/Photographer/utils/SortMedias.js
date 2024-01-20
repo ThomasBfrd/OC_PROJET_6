@@ -128,8 +128,10 @@ export default class SortMedia {
     menu.classList.remove('menu-open');
     options.forEach((optionValues) => {
       optionValues.classList.remove('active');
+      optionValues.classList.remove('hover');
     });
     optionValues.classList.add('active');
+    optionValues.classList.add('hover');
   }
 
   updateMediaSection(medias) {
