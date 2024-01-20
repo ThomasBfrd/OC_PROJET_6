@@ -13,6 +13,7 @@ main {
   height: 100%;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.6);
+  z-index: 2;
 }
 
 .photograph_header {
@@ -81,7 +82,6 @@ main {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  /* line-height: 1.5; */
   align-items: flex-start;
 }
 
@@ -132,7 +132,6 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  /* margin-bottom: 26px; */
 }
 
 form input {
@@ -384,6 +383,26 @@ input:-webkit-autofill:focus {
   cursor: pointer;
 }
 
+.icon-video {
+  position: relative;
+}
+
+.icon-video::before {
+  content: "\f03d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  bottom: 5px;
+  right: 0;
+  color: white;
+  background-color: var(--primary-bg);
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  z-index: 20;
+  padding: 15px;
+  cursor: pointer;
+}
+
 .infos_media {
   display: flex;
   justify-content: space-between;
@@ -509,7 +528,7 @@ input:-webkit-autofill:focus {
   font-size: 1.1rem;
 }
 
-.menu li:hover {
+.menu li:hover, .menu li:focus {
   background-color: var(--hover-bg);
   color: black;
 }

@@ -8,9 +8,16 @@ export default class MediasLightbox {
   launchLightbox(media, mediaTitle) {
     const next = document.querySelector('.next');
     const previous = document.querySelector('.previous');
-    let mediaSelected = document.querySelectorAll('.photographer-media');
+    const mediaSelected = document.querySelectorAll('.photographer-media');
+    const iconVideo = document.querySelectorAll('.icon-video');
 
     mediaSelected.forEach((medias, index) =>
+      medias.addEventListener('click', () => {
+        this.setMediaLightBox(index, media, mediaTitle, next, previous);
+      })
+    );
+    
+    iconVideo.forEach((medias, index) =>
       medias.addEventListener('click', () => {
         this.setMediaLightBox(index, media, mediaTitle, next, previous);
       })
@@ -43,7 +50,7 @@ export default class MediasLightbox {
     lightBoxMedia.innerHTML = `${src}`;
     lightBoxName.innerHTML = `${nameSrc}`;
 
-    this.isVideo(lightBoxMedia)
+    this.isVideo(lightBoxMedia);
     this.previousBtn(previous, media, mediaTitle);
     this.nextBtn(next, media, mediaTitle);
     this.keyboardParameters(media, mediaTitle);
@@ -110,6 +117,7 @@ export default class MediasLightbox {
 
     lightBoxMedia.innerHTML = `${src}`;
     lightBoxName.innerHTML = `${nameSrc}`;
+    this.isVideo(lightBoxMedia);
   }
 
   previous(media, title) {
@@ -127,6 +135,7 @@ export default class MediasLightbox {
 
     lightBoxMedia.innerHTML = `${src}`;
     lightBoxName.innerHTML = `${nameSrc}`;
+    this.isVideo(lightBoxMedia);
   }
 
   closeLightBox() {
