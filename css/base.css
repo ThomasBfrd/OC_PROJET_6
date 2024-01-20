@@ -108,11 +108,7 @@ h1 {
   .header {
    justify-content: center;
    margin: 0 auto;
-   width: 100dvw;
-  }
-
-  .logo {
-    margin-left: 30dvw;
+   width: 90dvw;
   }
 
   .header-home {
@@ -135,4 +131,14 @@ h1 {
     margin-bottom: 100px;
     text-align: center;
   }
+}
+
+@media screen and (max-width: 480px) {
+
+
+  .logo {
+    transform: translate(5%);
+    left: -5%;
+    position: absolute;
+ }
 }

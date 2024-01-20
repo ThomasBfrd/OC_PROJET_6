@@ -1,13 +1,13 @@
 'use strict';
 
 export default class ModalForm {
-  constructor() {
-    this.contact = document.querySelector('#contact_modal');
-  }
-  createModalContact(profile) {
-    const $modalContact = document.createElement('div');
+	constructor() {
+		this.contact = document.querySelector('#contact_modal');
+	}
+	createModalContact(profile) {
+		const $modalContact = document.createElement('div');
 
-    const modalForm = `
+		const modalForm = `
       <div class="modal">
           <div class="form" role="form">
             <header role="banner">
@@ -57,52 +57,52 @@ export default class ModalForm {
             </div>
         </div>
       `;
-    $modalContact.innerHTML = modalForm;
-    this.contact.appendChild($modalContact);
+		$modalContact.innerHTML = modalForm;
+		this.contact.appendChild($modalContact);
 
-    const contactBtn = document.querySelector('.contact-button');
+		const contactBtn = document.querySelector('.contact-button');
 
-    contactBtn.addEventListener('click', () => {
-      displayModal();
-    });
+		contactBtn.addEventListener('click', () => {
+			displayModal();
+		});
 
-    function displayModal() {
-      const modal = document.getElementById('contact_modal');
-      modal.style.display = 'block';
-      const body = document.querySelector('body');
-      body.style.overflow = 'hidden';
-      window.scrollTo(0, 0);
-    }
+		function displayModal() {
+			const modal = document.getElementById('contact_modal');
+			modal.style.display = 'block';
+			const body = document.querySelector('body');
+			body.style.overflow = 'hidden';
+			window.scrollTo(0, 0);
+		}
 
-    if (modalForm) {
-      const closeBtn = document.getElementById('close');
-      closeBtn.addEventListener('click', () => {
-        closeModal();
-      });
+		if (modalForm) {
+			const closeBtn = document.getElementById('close');
+			closeBtn.addEventListener('click', () => {
+				closeModal();
+			});
 
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeModal();
-        }
-      });
-    }
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape') {
+					closeModal();
+				}
+			});
+		}
 
-    const closeModal = () => {
-      const modal = document.getElementById('contact_modal');
-      modal.style.display = 'none';
-      const body = document.querySelector('body');
-      body.style.overflow = 'visible';
-      window.scrollTo(0, 0);
-    };
+		const closeModal = () => {
+			const modal = document.getElementById('contact_modal');
+			modal.style.display = 'none';
+			const body = document.querySelector('body');
+			body.style.overflow = 'visible';
+			window.scrollTo(0, 0);
+		};
 
-    const successBtn = document.querySelector('.success-form-button');
-    successBtn.addEventListener('click', () => {
-      closeSuccessModal();
-    });
+		const successBtn = document.querySelector('.success-form-button');
+		successBtn.addEventListener('click', () => {
+			closeSuccessModal();
+		});
 
-    const closeSuccessModal = () => {
-      const modal = document.getElementById('contact_modal');
-      modal.style.display = 'none';
-    };
-  }
+		const closeSuccessModal = () => {
+			const modal = document.getElementById('contact_modal');
+			modal.style.display = 'none';
+		};
+	}
 }

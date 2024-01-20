@@ -1,13 +1,12 @@
 'use strict';
 
 export default class HomePageBuilder {
-    
-    displayPhotographers(data) {
-        let profiles = data.photographers;
-        profiles.map(photographe => {
-            let sectionPhotographers = document.getElementById('photographers');
-            let article = document.createElement('article');
-            let photographerCard = `
+	displayPhotographers(data) {
+		const profiles = data.photographers;
+		profiles.map((photographe) => {
+			const sectionPhotographers = document.getElementById('photographers');
+			const article = document.createElement('article');
+			const photographerCard = `
             <a href="../../photographer.html?id=${photographe.id}" title="${photographe.name}">
                 <div class="imgUser ">
                     <div class="zoomEffect">
@@ -25,10 +24,10 @@ export default class HomePageBuilder {
                 <p class="tagline">${photographe.tagline}</p>
                 <p class="price">${photographe.price}€/jour</p>
             </div>
-            `
+            `;
 
-            sectionPhotographers.appendChild(article);
-            article.innerHTML = photographerCard;
-        })
-    }
+			sectionPhotographers.appendChild(article);
+			article.innerHTML = photographerCard;
+		});
+	}
 }

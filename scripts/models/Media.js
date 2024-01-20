@@ -1,44 +1,46 @@
-class ProfileMedia {
-    constructor(media) {
-        this._id = media.id;
-        this._photographerId = media.photographerId;
-        this._title = media.title;
-        this._image = media.image;
-        this._video = media.video;
-        this._likes = media.likes;
-        this._date = media.date;
-        this._price = media.price;
-    }
+'use strict';
 
-    get id() {
-        return this._id;
-    }
-    
-    get photographerId() {
-        return this._photographerId;
-    }
+export class ProfileMedia {
+	constructor(media) {
+		this._id = media.id;
+		this._photographerId = media.photographerId;
+		this._title = media.title;
+		this._image = media.image;
+		this._video = media.video;
+		this._likes = media.likes;
+		this._date = media.date;
+		this._price = media.price;
+	}
 
-    get title() {
-        return this._title;
-    }
+	get id() {
+		return this._id;
+	}
 
-    get price() {
-        return this._price;
-    }
+	get photographerId() {
+		return this._photographerId;
+	}
 
-    get likes() {
-        return this._likes;
-    }
+	get title() {
+		return this._title;
+	}
 
-    get date() {
-        return this._date;
-    }
+	get price() {
+		return this._price;
+	}
 
-    get type() {
-        if(this._image) {
-            return 'image'
-        } else {
-            return 'video'
-        }
-    }
+	get likes() {
+		return this._likes;
+	}
+
+	get date() {
+		return this._date;
+	}
+
+	get type() {
+		if (this._image) {
+			return 'image';
+		} else {
+			return 'video';
+		}
+	}
 }
