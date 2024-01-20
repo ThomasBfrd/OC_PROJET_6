@@ -21,8 +21,7 @@ export default class PhotographerProfile {
     </div>
     <button class="contact-button" role="button">Contactez-moi</button>
     <div class="imgUser">
-    <img role="img" src="../../../assets/photographers/
-    Photographers_ID_Photos/${photographerById[0].portrait}"
+    <img role="img" src="../../../assets/photographers/Photographers_ID_Photos/${photographerById[0].portrait}"
       alt="portrait photographe" aria-label="portrait photographer"
       class="portrait_${photographerById[0].id}">
     </div>
