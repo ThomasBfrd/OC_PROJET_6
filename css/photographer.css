@@ -23,7 +23,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .contact-button {
@@ -380,7 +379,7 @@ input:-webkit-autofill:focus {
   position: relative;
 }
 
-.icon-video::before {
+.icon-video::after {
   content: "\f03d";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -394,6 +393,7 @@ input:-webkit-autofill:focus {
   z-index: 3;
   padding: 15px;
   cursor: pointer;
+  pointer-events: none;
 }
 
 .infos_media {
@@ -655,6 +655,8 @@ input:-webkit-autofill:focus {
 }
 
 @media screen and (max-width: 480px) {
+
+
   .modal {
     overflow-y: scroll;
   }
@@ -665,6 +667,11 @@ input:-webkit-autofill:focus {
     top: 20px;
 
   }
+
+  .photograph_main {
+    padding-left: 0;
+    padding-right: 15px;
+  }
   
   .display_medias img,
   .display_medias video {
@@ -673,7 +680,38 @@ input:-webkit-autofill:focus {
   }
 
   .resume-profile {
-    width: 80dvw;
+    height: 10dvh;
+    width: 68dvw;
+    bottom: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 0 15px;
+    justify-content: center;
+    gap: 15%;
+  }
+  
+  .total-likes-heart {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .total-likes {
+    width: 40%;
+    margin-left: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .tjr-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 80%;
+  }
+  
+  .total-heart {
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 
 }

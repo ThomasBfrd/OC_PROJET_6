@@ -9,15 +9,8 @@ export default class MediasLightbox {
 		const next = document.querySelector('.next');
 		const previous = document.querySelector('.previous');
 		const mediaSelected = document.querySelectorAll('.photographer-media');
-		const iconVideo = document.querySelectorAll('.icon-video');
 
 		mediaSelected.forEach((medias, index) =>
-			medias.addEventListener('click', () => {
-				this.setMediaLightBox(index, media, mediaTitle, next, previous);
-			}),
-		);
-
-		iconVideo.forEach((medias, index) =>
 			medias.addEventListener('click', () => {
 				this.setMediaLightBox(index, media, mediaTitle, next, previous);
 			}),
