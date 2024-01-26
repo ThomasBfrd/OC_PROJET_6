@@ -19,7 +19,8 @@ export default class PhotographerProfile {
       ${photographerById[0].country}</p>
       <p class="tagline">${photographerById[0].tagline}</p>
     </div>
-    <button class="contact-button" role="button">Contactez-moi</button>
+	<div class="spacer"></div>
+    <button class="contact-button" role="button" aria-labelledby="contacter le photographe">Contactez-moi</button>
     <div class="imgUser">
     <img role="img" src="../../../assets/photographers/Photographers_ID_Photos/${photographerById[0].portrait}"
       alt="portrait photographe" aria-label="portrait photographer"

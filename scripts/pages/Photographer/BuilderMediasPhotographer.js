@@ -26,9 +26,9 @@ export default class Builder {
       ${createMedia.outerHTML}</div>
       <div class="infos_media">
       <span class="media_title">${item.title}</span>
-      <div class="media_likes">
+      <div class="media_likes" aria-label="nombre de likes sur le média">
       <span class="likes">${item.likes}</span>
-      <i class="fa-regular fa-heart heart"></i>
+      <i class="fa-regular fa-heart heart" aria-label="icone de likes"></i>
       </div>
       </div>
       </div>

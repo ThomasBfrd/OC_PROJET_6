@@ -30,7 +30,7 @@ export default class PhotographerMedias {
 		const resume = `
                 <div class="total-likes-heart">
                   <span class="total-likes">${totalLikes}</span>
-                  <i class="fas fa-heart total-heart" aria-label='likes'></i>
+                  <i class="fas fa-heart total-heart" aria-label='Total de likes'></i>
                 </div>
                 <span class="tjr-price">${profile.price} €/ jour</span>
                 `;
