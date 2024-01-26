@@ -452,7 +452,7 @@ input:-webkit-autofill:focus {
   border-radius: 5px;
   padding: 1em;
   cursor: pointer;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -460,7 +460,7 @@ input:-webkit-autofill:focus {
 .selected {
   background-color: var(--secondary-text);
   color: #fff;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -483,7 +483,7 @@ input:-webkit-autofill:focus {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 6px solid #fff;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 
 .select:hover .caret {
