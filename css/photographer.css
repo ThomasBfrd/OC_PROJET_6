@@ -445,7 +445,7 @@ input:-webkit-autofill:focus {
 
 .select {
   background-color: var(--secondary-text);
-  color: #fff;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -459,7 +459,7 @@ input:-webkit-autofill:focus {
 
 .selected {
   background-color: var(--secondary-text);
-  color: #fff;
+  color: #ffffff;
   /* transition: 0.3s; */
   font-weight: 600;
   font-size: 1.1rem;
@@ -482,7 +482,7 @@ input:-webkit-autofill:focus {
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid #fff;
+  border-top: 6px solid #ffffff;
   /* transition: 0.3s; */
 }
 
