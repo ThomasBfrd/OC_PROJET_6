@@ -26,8 +26,9 @@ a:active {
 }
 
 body {
+  overflow-x: hidden;
   font-family: "DM Sans", sans-serif;
-  width: 100%;
+  width: 100dvw;
   max-width: 1824px;
   margin: 0 auto;
 }
@@ -107,7 +108,7 @@ h1 {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
 
   .logo {
     margin-left: 0;
@@ -139,14 +140,4 @@ h1 {
     margin-bottom: 100px;
     text-align: center;
   }
-}
-
-@media screen and (max-width: 480px) {
-
-
-  /* .logo {
-    transform: translate(5%);
-    left: -5%;
-    position: absolute;
- } */
 }
