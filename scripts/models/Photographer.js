@@ -1,5 +1,6 @@
 'use strict';
 
+// Classe d'un modèle d'objet d'un photographe avec la définition de ses attributs
 export class Photographer {
 	constructor(data) {
 		this._name = data.name;

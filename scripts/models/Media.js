@@ -1,5 +1,6 @@
 'use strict';
 
+// Classe d'un modèle d'objet d'un média avec la définition de ses attributs
 export class ProfileMedia {
 	constructor(media) {
 		this._id = media.id;

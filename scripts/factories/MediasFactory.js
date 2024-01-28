@@ -1,7 +1,10 @@
 /* eslint-disable no-prototype-builtins */
 'use strict';
 
+// Factory Pattern, qui permet de piper en fonction du type de média (img ou vidéo)
 export default class MediasFactory {
+	// Méthode qui permet la création du type de média
+	// Chaque type de média est return pour être ensuite récupéré dans le builder
 	createMedia(media, profile ) {
 		if (media.hasOwnProperty('image')) {
 			const img = document.createElement('img');
