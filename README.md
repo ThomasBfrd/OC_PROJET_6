@@ -1,14 +1,3 @@
-<style>
-    img {
-        width: 50%;
-    }
-
-    .demo {
-        height: 35%;
-        width: 35%;
-    }
-</style>
-
 # Projet 6 - FishEye
 
 Sixième projet de la formation OpenClassrooms : Développeur d'applications Javascript/React.
