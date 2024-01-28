@@ -3,23 +3,29 @@
 import BuilderMediasPhotographer from '../BuilderMediasPhotographer.js';
 import LikeMedia from './MediasLikes.js';
 
+// Classe qui gère le tri des médias
 export default class SortMedia {
 	constructor(medias, profile) {
+		// On assigne les données récupérées du constructor à des variables
+		// On crée un tableau avec l'ordre original des médias
 		this.originalMedias = medias;
+		// On crée une copie du tableau des médias qu'on utilisera pour le tri
 		this.sortedMedias = [...this.originalMedias];
 		this.profile = profile;
 		this.totalLikes = 0;
 
+		// On récupère le nombre total de likes 
 		const totalLikes = document.querySelector('.total-likes');
 		this.totalLikes = this.originalMedias.reduce((acc, cur) => acc + cur.likes, 0);
 
+		// On récupère tous les éléments du dropdown dans le DOM
 		const dropdown = document.querySelector('.dropdown');
-
 		const select = dropdown.querySelector('.select');
 		const caret = dropdown.querySelector('.caret');
 		const menu = dropdown.querySelector('.menu');
 		const options = dropdown.querySelectorAll('.menu li');
 
+		// Au click ou keydown, on ajoute des évènements pour l'ouverture/fermeture du dropdown
 		select.addEventListener('click', () => {
 			caret.classList.toggle('caret-rotate');
 			menu.classList.toggle('menu-open');
@@ -37,34 +43,51 @@ export default class SortMedia {
 				this.changeMenu(option);
 			});
 		});
+		
+		// Initialisation de l'index de l'option actuellement sélectionnée
+		let currentlySelectedIndex = -1; 
 
-		let currentlySelectedIndex = -1; // Initialisation de l'index de l'option actuellement sélectionnée
-
+		// Toutes les méthodes gérées en fonction du keydown effectué
 		options.forEach((option) => {
 			option.addEventListener('keydown', (event) => {
 				if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
 					event.preventDefault();
+					// On soustrait de 1 la valeur de l'index de l'option cible
 					currentlySelectedIndex--;
+
 					if (currentlySelectedIndex < 0) {
-						currentlySelectedIndex = options.length - 1; // Si on dépasse le début du tableau, on revient à la fin
+						// Si on dépasse le début du tableau, on revient à la fin
+						currentlySelectedIndex = options.length - 1;
 					}
+					// on focus l'option sur laquelle se trouve le user pour le sélectionner
 					options[currentlySelectedIndex].focus();
 				} else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
 					event.preventDefault();
+					// On additionne de 1 la valeur de l'index de l'option cible
 					currentlySelectedIndex++;
+
 					if (currentlySelectedIndex >= options.length) {
-						currentlySelectedIndex = 0; // Si on dépasse la fin du tableau, on revient au début
+						// Si on dépasse la fin du tableau, on revient au début
+						currentlySelectedIndex = 0; 
 					}
+					// on focus l'option sur laquelle se trouve le user pour le sélectionner
 					options[currentlySelectedIndex].focus();
+
 				} else if (event.key === 'Enter') {
+					// Si une option est focus, et qu'on appuie sur "Entrer", on appelle changeMenu
+					// Qui permettra d'afficher l'option ciblée
 					this.changeMenu(option);
+
+					// Possibilité de fermer le keydown avec la touche Echap
 				} else if (event.key === 'Escape') {
+
 					caret.classList.toggle('caret-rotate');
 					menu.classList.toggle('menu-open');
 				}
 			});
 		});
 
+		// Fermeture du dropdown aec la touche "Echap" même si on est pas focus sur une option
 		document.addEventListener('keydown', (event) => {
 			if (event.key === 'Escape') {
 				menu.classList.remove('menu-open');
@@ -99,6 +122,7 @@ export default class SortMedia {
 		});
 	}
 
+	// Méthode qui permet de trier les médias selon l'option séléctionnée
 	filterSelected(selectedId) {
 		switch (selectedId) {
 		case 'Popularité':
@@ -118,6 +142,8 @@ export default class SortMedia {
 		}
 	}
 
+	// Méthode qui permet d'afficher l'option sélectionnée
+	// gère aussi le hover et la gestion du caret
 	changeMenu(optionValues) {
 		const dropdown = document.querySelector('.dropdown');
 		const caret = dropdown.querySelector('.caret');
@@ -136,6 +162,8 @@ export default class SortMedia {
 		optionValues.classList.add('hover');
 	}
 
+	// Méthode qui instancie les médias triés pour regénérer la galerie des médias affichés
+	// Mais aussi la gestion des likes
 	updateMediaSection(medias) {
 		document.querySelector('.medias').innerHTML = '';
 		new BuilderMediasPhotographer().createMediaCard(medias, this.profile);
