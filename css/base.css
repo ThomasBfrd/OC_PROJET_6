@@ -26,7 +26,11 @@ a:active {
 }
 
 body {
+  overflow-x: hidden;
   font-family: "DM Sans", sans-serif;
+  width: 100dvw;
+  max-width: 1824px;
+  margin: 0 auto;
 }
 
 header {
@@ -104,18 +108,23 @@ h1 {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+
+  .logo {
+    margin-left: 0;
+  }
+
   .header {
    justify-content: center;
    margin: 0 auto;
-   width: 90dvw;
+   width: 100dvw;
   }
 
   .header-home {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90dvw;
+    width: 100dvw;
     text-align: center;
     margin: 20px auto;
     margin-top: 100px;
@@ -131,14 +140,4 @@ h1 {
     margin-bottom: 100px;
     text-align: center;
   }
-}
-
-@media screen and (max-width: 480px) {
-
-
-  .logo {
-    transform: translate(5%);
-    left: -5%;
-    position: absolute;
- }
 }

@@ -1,9 +1,13 @@
 'use strict';
 
+// Classe qui instancie le formulaire sous forme de modal
 export default class ModalForm {
 	constructor() {
+		// On récupère le wrapper qui contiendra le formulaire
 		this.contact = document.querySelector('#contact_modal');
 	}
+
+	// Méthode qui créee le contenu HTML du formulaire
 	createModalContact(profile) {
 		const $modalContact = document.createElement('div');
 
@@ -57,15 +61,22 @@ export default class ModalForm {
             </div>
         </div>
       `;
+
+		// On intègre le contenu HTML du formulaire dans le div crée plus haut
 		$modalContact.innerHTML = modalForm;
+		// Puis on ajoute ce div en tant qu'enfant au wrapper
 		this.contact.appendChild($modalContact);
 
 		const contactBtn = document.querySelector('.contact-button');
+		// Variable qui surveille l'ouverture et la fermeture de la modal
+		let isModalOpened = false;
 
 		contactBtn.addEventListener('click', () => {
+			isModalOpened = true;
 			displayModal();
 		});
 
+		// Méthode qui modifie le CSS pour faire apparaitre le wrapper et sa modal
 		function displayModal() {
 			const modal = document.getElementById('contact_modal');
 			modal.style.display = 'block';
@@ -74,6 +85,7 @@ export default class ModalForm {
 			window.scrollTo(0, 0);
 		}
 
+		// Si le formulaire est existant, on récupère à l'intérieur le bouton pour fermer la modal
 		if (modalForm) {
 			const closeBtn = document.getElementById('close');
 			closeBtn.addEventListener('click', () => {
@@ -81,25 +93,30 @@ export default class ModalForm {
 			});
 
 			document.addEventListener('keydown', (event) => {
-				if (event.key === 'Escape') {
+				if (event.key === 'Escape' && isModalOpened) {
 					closeModal();
 				}
 			});
 		}
 
+		// Méthode qui modifie le CSS pour masquer et fermer la modal
 		const closeModal = () => {
+			isModalOpened = false;
 			const modal = document.getElementById('contact_modal');
 			modal.style.display = 'none';
 			const body = document.querySelector('body');
-			body.style.overflow = 'visible';
+			body.style.overflowY = 'visible';
 			window.scrollTo(0, 0);
 		};
 
+		// Gestion d'event pour fermer la modal après avoir cliqué sur le bouton de succès
 		const successBtn = document.querySelector('.success-form-button');
 		successBtn.addEventListener('click', () => {
 			closeSuccessModal();
 		});
 
+		// Méthode qui permet de masquer/fermer le message de confirmation
+		// Après l'envoi des données du formulaire
 		const closeSuccessModal = () => {
 			const modal = document.getElementById('contact_modal');
 			modal.style.display = 'none';
