@@ -2,30 +2,33 @@
 
 // Classe qui instancie la lightbox
 export default class MediasLightbox {
-	constructor() {
+	constructor(medias, mediasTitle) {
 		// Initialisation d'un index permettant de parcourir le tableau des médias à travers la lightbox
 		this.mediasListIndex = 0;
+		this.mediasList = medias;
+		this.mediasTitle = mediasTitle;
+
+		this.launchLightbox(this.mediasList, this.mediasTitle);
 	}
+
 
 	// Méthode qui permet d'ouvrir la lightbox au click sur un média
 	// On appelle lors de l'ouverture setMediaLightBox avec comme paramètre
 	// l'index actuel, le média et son titre sélectionné
 	// Mais aussi les boutons pour afficher le média suivant/précédent
 	launchLightbox(media, mediaTitle) {
-		const next = document.querySelector('.next');
-		const previous = document.querySelector('.previous');
 		const mediaSelected = document.querySelectorAll('.photographer-media');
 
 		mediaSelected.forEach((medias, index) =>
 			medias.addEventListener('click', () => {
-				this.setMediaLightBox(index, media, mediaTitle, next, previous);
+				this.setMediaLightBox(index, media, mediaTitle);
 			}),
 		);
 
 		mediaSelected.forEach((medias, index) =>
 			medias.addEventListener('keydown', (event) => {
 				if (event.key === 'Enter') {
-					this.setMediaLightBox(index, media, mediaTitle, next, previous);
+					this.setMediaLightBox(index, media, mediaTitle);
 				}
 			}),
 		);
@@ -33,7 +36,9 @@ export default class MediasLightbox {
 	}
 
 	// Méthode qui affichera le média sélectionné
-	setMediaLightBox(index, media, mediaTitle, next, previous) {
+	setMediaLightBox(index, media, mediaTitle ) {
+		const next = document.querySelector('.next');
+		const previous = document.querySelector('.previous');
 		const lightBoxWrapper = document.querySelector('.lightbox_wrapper');
 		const lightBoxMedia = document.querySelector('.lightbox_media');
 		const lightBoxName = document.querySelector('.lightbox_name');
@@ -58,9 +63,14 @@ export default class MediasLightbox {
 		this.isVideo(lightBoxMedia);
 		// En fonction du bouton next ou previous, on modifie l'index
 		// et on affichera le média correspondant à l'index sélectionné
-		this.previousBtn(previous, media, mediaTitle);
-		this.nextBtn(next, media, mediaTitle);
-		this.keyboardParameters(media, mediaTitle);
+		this.removeNextBtnListener(next);
+		this.removePreviousBtnListener(previous);
+		this.removeKeyboardListener();
+	
+		// Now add new listeners
+		this.nextBtn(next, this.mediasList, this.mediasTitle);
+		this.previousBtn(previous, this.mediasList, this.mediasTitle);
+		this.keyboardParameters(this.mediasList, this.mediasTitle);
 		this.closeLightBox();
 	}
 
@@ -73,40 +83,58 @@ export default class MediasLightbox {
 		}
 	}
 
+	nextBtn(nextBtn, media, title) {
+		this.removeNextBtnListener(nextBtn);
+		const listener = (e) => {
+			e.preventDefault();
+			this.next(media, title);
+		};
+		nextBtn.addEventListener('click', listener);
+		nextBtn._listener = listener;
+	}
+
+	previousBtn(previousBtn, media, title) {
+		this.removePreviousBtnListener(previousBtn);
+		const listener = (e) => {
+			e.preventDefault();
+			this.previous(media, title);
+		};
+		previousBtn.addEventListener('click', listener);
+		previousBtn._listener = listener;
+	}
+
 	keyboardParameters(media, title) {
 		const displayedMedia = document.querySelector('.lightbox_media');
 		let keydownPlay = true;
-		document.addEventListener('keydown', (event) => {
-			if (event.key === 'ArrowRight' || event.key === '6') {
+		this.removeKeyboardListener();
+		const listener = (event) => {
+			switch (event.key) {
+			case 'ArrowRight' || '6':
+				event.preventDefault();
 				this.next(media, title);
-			} else if (event.key === 'ArrowLeft' || event.key === '4') {
+				break;
+			case 'ArrowLeft' || '4':
+				event.preventDefault();
 				this.previous(media, title);
-			} else if (
-				// Si le tagname du média est une vidéo et qu'on appuie sur la touche "Espace"
-				// On peut lancer la vidéo dans la lightbox
-				displayedMedia.children[0].tagName === 'VIDEO' && event.key === ' '
-			) {
-				keydownPlay = !keydownPlay;
-				if (!keydownPlay) {
-					return displayedMedia.children[0].play();
-				} else {
-					return displayedMedia.children[0].pause();
-				}
+				break;
+			case 'Escape':
+				this.closeLightBox();
+				break;
+			case ' ':
+				if (displayedMedia.children[0].tagName === 'VIDEO') {
+					keydownPlay = !keydownPlay;
+					if (!keydownPlay) {
+						displayedMedia.children[0].play();
+					} else {
+						displayedMedia.children[0].pause();
+					}}
+				break;
+			default:
+				break;
 			}
-		});
-	}
-
-	nextBtn(nextBtn, media, title) {
-		nextBtn.addEventListener('click', (e) => {
-			e.preventDefault();
-			this.next(media, title);
-		});
-	}
-	previousBtn(previousBtn, media, title) {
-		previousBtn.addEventListener('click', (e) => {
-			e.preventDefault();
-			this.previous(media, title);
-		});
+		};
+		document.addEventListener('keydown', listener);
+		document._keyboardListener = listener;
 	}
 
 	// Méthode qui permet de changer l'index et afficher dans le DOM
@@ -129,6 +157,7 @@ export default class MediasLightbox {
 
 		lightBoxMedia.innerHTML = `${src}`;
 		lightBoxName.innerHTML = `${nameSrc}`;
+
 		this.isVideo(lightBoxMedia);
 	}
 
@@ -155,10 +184,15 @@ export default class MediasLightbox {
 	closeLightBox() {
 		const lightBoxWrapper = document.querySelector('.lightbox_wrapper');
 		const closeBtn = document.querySelector('.close');
+		const lightBoxMedia = document.querySelector('.lightbox_media');
+		const lightBoxName = document.querySelector('.lightbox_name');
 		closeBtn.addEventListener('click', () => {
 			const body = document.querySelector('body');
 			body.style.overflow = 'scroll';
 			lightBoxWrapper.style.display = 'none';
+			this.mediasListIndex = 0;
+			lightBoxMedia.innerHTML = '';
+			lightBoxName.innerHTML = '';
 		});
 
 		document.addEventListener('keydown', (event) => {
@@ -168,5 +202,29 @@ export default class MediasLightbox {
 				lightBoxWrapper.style.display = 'none';
 			}
 		});
+	}
+
+	removeNextBtnListener(nextBtn) {
+		const listener = nextBtn._listener;
+		if (listener) {
+			nextBtn.removeEventListener('click', listener);
+			delete nextBtn._listener;
+		}
+	}
+	
+	removePreviousBtnListener(previousBtn) {
+		const listener = previousBtn._listener;
+		if (listener) {
+			previousBtn.removeEventListener('click', listener);
+			delete previousBtn._listener;
+		}
+	}
+	
+	removeKeyboardListener() {
+		const listener = document._keyboardListener;
+		if (listener) {
+			document.removeEventListener('keydown', listener);
+			delete document._keyboardListener;
+		}
 	}
 }
