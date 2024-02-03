@@ -8,13 +8,13 @@ export default class Builder {
 	constructor() {
 		// On initialise le total de likes dans le mini footer
 		this.totalLikes = 0;
+		this.mediasList = [];
+		this.mediasTitlesList = [];
 	}
 
 	createMediaCard(media, profile) {
 		// On crée deux tableaux vides (médias et titres)
 		// qui vont s'auto-compléter en fonction du nombre de donées récupérées
-		const mediasList = [];
-		const mediasTitlesList = [];
 		const profileName = profile.name;
 		// const mediaFactory = new MediasFactory();
 
@@ -43,16 +43,16 @@ export default class Builder {
 			// On cumule le nombre total de likes au fur et à mesure
 			this.totalLikes += item.likes;
 			// On ajoute chaque média dans les tableaux crées
-			mediasList.push(createMedia.outerHTML);
-			mediasTitlesList.push(item.title);
+			this.mediasList.push(createMedia.outerHTML);
+			this.mediasTitlesList.push(item.title);
 			article.innerHTML = mediaCard;
 			sectionMedias.appendChild(article);
 
 			// Pour chaque objet instancié, on l'instancie de nouveau dans
 			// la lightbox, qui récupère le média et le titre
-			new MediasLightbox().launchLightbox(mediasList, mediasTitlesList);
 		});
-
+		
+		new MediasLightbox(this.mediasList, this.mediasTitlesList);
 
 		return this;
 	}
